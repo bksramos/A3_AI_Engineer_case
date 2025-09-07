@@ -1,0 +1,63 @@
+flowchart TD
+    A[User Input] --> B{Input Type?}
+    
+    B -->|Incident Description| C{Is valid incident?}
+    B -->|Search Query| D[search_incident]
+    B -->|Analysis Request| E[analyze_incident]
+    
+    C -->|No| F[Return help message]
+    C -->|Yes| G[Preprocess incident text]
+    
+    G --> H[Clean whitespace, add time context, add date reference]
+    H --> I[Call LLM with preprocessed text]
+    
+    I --> J{LLM available and returns valid JSON?}
+    
+    J -->|Yes| K[Structured incident data from LLM]
+    J -->|No| L[Use fallback regex tools]
+    
+    L --> M[Extract date, location, type, impact]
+    M --> N[Structured incident data from regex]
+    
+    K --> O[save_incident to database]
+    N --> O
+    
+    O --> P[process_incident_embeddings]
+    P --> Q[Generate vector embeddings for similarity search]
+    Q --> R[Store embeddings in vector database]
+    
+    R --> S[Return success with incident ID]
+    
+    D --> T[Query vector database with embeddings]
+    T --> U[Find similar incidents using cosine similarity]
+    U --> V[Return ranked incident matches]
+    
+    E --> W[Retrieve related incidents from database]
+    W --> X[Analyze patterns, trends, root causes]
+    X --> Y[Generate insights and recommendations]
+    Y --> Z[Return analysis report]
+    
+    S --> AA[Final Output: Save Confirmation]
+    V --> BB[Final Output: Search Results]
+    Z --> CC[Final Output: Analysis Report]
+    F --> DD[Help/Error Response]
+    
+    style A fill:#e1f5fe
+    style G fill:#f3e5f5
+    style H fill:#f3e5f5
+    style I fill:#fff3e0
+    style O fill:#ffecb3
+    style P fill:#ffecb3
+    style Q fill:#ffecb3
+    style R fill:#ffecb3
+    style D fill:#e8f5e8
+    style T fill:#e8f5e8
+    style U fill:#e8f5e8
+    style E fill:#f1f8e9
+    style W fill:#f1f8e9
+    style X fill:#f1f8e9
+    style Y fill:#f1f8e9
+    style AA fill:#c8e6c9
+    style BB fill:#c8e6c9
+    style CC fill:#c8e6c9
+    style DD fill:#ffcdd2

@@ -1,0 +1,23 @@
+flowchart TD
+    A[User Input] --> B{Is it an incident description?}
+    
+    B -->|No| C[Return help message]
+    B -->|Yes| D[Call LLM for parsing]
+    
+    D --> E{LLM available and returns valid JSON?}
+    
+    E -->|Yes| F[Return structured JSON from LLM]
+    E -->|No| G[Use fallback regex tools]
+    
+    G --> H[Extract date, location, type, impact]
+    H --> I[Return structured JSON from regex]
+    
+    F --> J[Final Output: Structured Incident JSON]
+    I --> J
+    C --> K[Help/Error Response]
+    
+    style A fill:#e1f5fe
+    style D fill:#fff3e0
+    style G fill:#e8f5e8
+    style J fill:#c8e6c9
+    style K fill:#ffcdd2
