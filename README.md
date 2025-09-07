@@ -48,6 +48,44 @@ A simple FastAPI-based service and CLI agent for parsing natural language incide
 - [Ollama](https://ollama.com/) running locally or accessible via network (default: `http://172.29.80.1:11434`)
 - (Optional) Docker
 
+---
+
+#### 🧩 Check if Ollama is Installed and Running
+
+1. **Check if Ollama is installed:**
+   ```sh
+   ollama --version
+   ```
+   If you see a version number, Ollama is installed. If you get an error, install it:
+
+2. **Install Ollama:**
+   - **Windows/Mac:** Download and install from [https://ollama.com/download](https://ollama.com/download)
+   - **Linux:**  
+     ```sh
+     curl -fsSL https://ollama.com/install.sh | sh
+     ```
+
+3. **Start Ollama (if not running):**
+   - On Windows/Mac, open the Ollama app.
+   - On Linux, run:
+     ```sh
+     ollama serve
+     ```
+
+4. **Check if Ollama is running:**
+   ```sh
+   ollama list
+   ```
+   If you see a list of models or an empty list, Ollama is running.
+
+5. **Install a model (e.g., llama3):**
+   ```sh
+   ollama pull llama3
+   ```
+   Replace `llama3` with your preferred model if needed.
+
+---
+
 ### Installation
 
 1. Clone the repository:
