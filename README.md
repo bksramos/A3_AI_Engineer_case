@@ -67,6 +67,12 @@ A simple FastAPI-based service and CLI agent for parsing natural language incide
 
 3. **Start Ollama (if not running):**
    - On Windows/Mac, open the Ollama app.
+   - In case of fail of connection, even if Ollama is running, do the following in PowerShell:
+     ```sh
+     taskkill /f /im ollama.exe
+     $env:OLLAMA_HOST="0.0.0.0:11434"
+     ollama serve
+     ```
    - On Linux, run:
      ```sh
      ollama serve
@@ -106,7 +112,11 @@ A simple FastAPI-based service and CLI agent for parsing natural language incide
    ```
 
 4. Configure your `.env` file (see sample in the repo).
-
+- Necessaries envs:
+   - STARK="Stark Folder Path"
+   - TOOLS="Tools folder path"
+   - OLLAMA_URL="Ollama url path"
+   
 ### Running the API
 
 Start the FastAPI server (requires Ollama running):
@@ -176,6 +186,29 @@ Ontem às 14h, no escritório de São Paulo, houve uma falha no servidor princip
   "impacto": "afetou o sistema de faturamento por 2 horas"
 }
 ```
+
+## 🛠️ Future Projects
+
+As this is an initial work presenting the features and potential of using an LLM for incident processing, there is still much room for improvement and refinement, should the business or customer require it. The following diagram details what an Enhanced Incident Agent (Enhanced Stark) could look like, with the addition of the following features:
+
+1. Data Persistence (save_incident)
+- Incidents are stored permanently in a database
+- Each incident gets a unique ID for tracking
+- Historical data accumulates for analysis
+2. Intelligent Search (search_incident)
+- Vector-based similarity search using embeddings
+- Finds related incidents even with different wording
+- Ranked results by relevance score
+3. Knowledge Building (process_incident_embeddings)
+- Converts incidents to mathematical vectors
+- Enables semantic search capabilities
+- Builds organizational knowledge base
+4. Pattern Recognition (analyze_incident)
+- Identifies trends across multiple incidents
+- Root cause analysis
+- Predictive insights and recommendations
+
+![Enhanced Agent Workflow](workflow/enhanced_agent_workflow.png)
 
 ## 🤝 Contributing
 
