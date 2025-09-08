@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv(os.getenv("DOTENV"))
 
 # Add paths
-sys.path.append(os.getenv("CARTER"))
+sys.path.append(os.getenv("STARK"))
 sys.path.append(os.getenv("TOOLS"))
 
 from agent import create_parser_agent, SimpleRunner

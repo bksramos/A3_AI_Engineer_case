@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv(os.getenv("DOTENV"))
 
 # Add paths
-sys.path.append(os.getenv("CARTER"))
+sys.path.append(os.getenv("STARK"))
 sys.path.append(os.getenv("TOOLS"))
 
 # Import only the parsing tool
