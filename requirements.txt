@@ -1,34 +1,9 @@
-# Simple Incident Parser API Requirements
-# Core dependencies for FastAPI-based incident parsing service
-
-# Environment and configuration
 python-dotenv>=1.0.0
-
-# HTTP client for Ollama API calls
 httpx>=0.24.0
-
-# FastAPI and web server dependencies
 fastapi>=0.104.0
 uvicorn[standard]>=0.23.0
 pydantic>=2.4.0
 numpy
 requests
 pandas
-
-# CORS middleware (included with FastAPI)
-# - fastapi.middleware.cors
-
-# Standard library dependencies (included with Python)
-# - os
-# - sys  
-# - asyncio
-# - json
-# - datetime
-# - typing
-
-# Optional: For better development and production experience
-# pytest>=7.0.0          # For API testing
-# pytest-asyncio>=0.21.0 # For async test support
-# httpx>=0.24.0          # For test client (already included above)
-# black>=22.0.0          # For code formatting
-# flake8>=5.0.0          # For linting
+mcp[cli]
